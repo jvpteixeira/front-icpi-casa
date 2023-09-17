@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Sedan'; /*Can be any text*/
+  src: local('SedanSC'), url('../assets/fonts/Sedan\ SC.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Segoe UI'; /*Can be any text*/
+  src: url('../assets/fonts/Segoe\ UI.ttf') format('ttf');
+}
