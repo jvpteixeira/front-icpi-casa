@@ -217,3 +217,69 @@ export const DoNotHaveAccountLink = styled(Link)`
     font-weight: 500;
   }
 `;
+
+export const ProjectCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%; 
+  height: 18em; 
+  background-color: white;
+  border-radius: 8px; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+`;
+
+
+
+export const ProjectTitle = styled.h1`
+  font-size: 1.5em;
+`;
+
+export const ProjectAddress = styled.h3`
+  font-size: 1em;
+`;
+
+export const ProjectCardLeftSide = styled.div`
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+
+export const ProjectCardRight = styled.div`
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+
+export const ProjectHeader = styled.div`
+  
+`;
+
+export const ProjectGoalContainer = styled.div`
+  
+`;
+
+
+export const ProjectGoalLabel = styled.div`
+  font-size: 0.7em;
+`;
+
+export const ProjectGoal = styled.div`
+  font-size: 1.5em;
+  color: orange;
+  font-weight: bold;
+`;
+
+export const ProjectImage = styled.img`
+  border-radius: 5px;
+  width: 7em;
+`;
+
+
+
+
+
+

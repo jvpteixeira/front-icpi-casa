@@ -1,0 +1,13 @@
+    {/* <ProjectCardRightSide>
+            <ProjectImage>Image.jpg</ProjectImage>
+            <ProjectSeeDetails>Ver detalhes</ProjectSeeDetails>
+          </ProjectCardRightSide>
+          <ProjectVoluntary>
+            <ProjectVoluntaryLeftSide>
+              <ImageVoluntary>Image.jpg</ImageVoluntary>
+              <NameVoluntary>Edivaldo Pereira</NameVoluntary>
+            </ProjectVoluntaryLeftSide>
+            <ProjectVoluntaryRightSide>
+              <AttributionVoluntary>Representante - VOluntário</AttributionVoluntary>
+            </ProjectVoluntaryRightSide>
+          </ProjectVoluntary> */}

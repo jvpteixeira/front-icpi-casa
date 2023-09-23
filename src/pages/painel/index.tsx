@@ -14,6 +14,16 @@ import {
   MetricsSection,
   NextButton,
   PieComponent,
+  ProjectAddress,
+  ProjectCard,
+  ProjectCardLeftSide,
+  ProjectCardRight,
+  ProjectGoal,
+  ProjectGoalContainer,
+  ProjectGoalLabel,
+  ProjectHeader,
+  ProjectImage,
+  ProjectTitle,
 } from './styles';
 import { faCalendar, faEnvelope, faLocationDot, faLock, faMoneyCheck, faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useFormik } from 'formik';
@@ -24,6 +34,7 @@ import Textbox from '../../components/Textbox';
 import Painel from '../../interfaces/painel';
 import React, { PureComponent } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import Brunatop  from '../../assets/images/brunatop.jpeg';
 
 export default function PainelPage() {
   const { setLoading } = useContext(LoadingContextContent);
@@ -98,75 +109,21 @@ export default function PainelPage() {
   return (
     <Offsite>
       <Content>
-        <HeaderContainer>
-          <Header>{dictionary.painel.welcomeTitle}</Header>
-        </HeaderContainer>
-        <Form>
-          <Textbox
-            label={dictionary.painel.labelDateStart}
-            name="dateStart"
-            type="date"
-            placeholder={dictionary.painel.dateStart}
-            value={filterForm.values.dateStart}
-            setValue={filterForm.handleChange}
-            error={filterForm.errors.dateStart}
-            icon={faCalendar} 
-          />
-          <Textbox
-            label={dictionary.painel.labelDateEnd}
-            name="dateEnd"
-            type="date"
-            placeholder={dictionary.painel.dateEnd}
-            value={filterForm.values.dateEnd}
-            setValue={filterForm.handleChange}
-            error={filterForm.errors.dateEnd}
-            icon={faCalendar}
-          />
-          <NextButton onClick={handleSubmit}>
-            <span>{dictionary.painel.filter}</span>
-          </NextButton>
-        </Form>
-        <MetricsContainer>
-          <MetricsSection>
-            <MetricsComponent>
-              {`R$ 890,00`}
-              <MetricsLabel>
-                Faturamento
-              </MetricsLabel>
-            </MetricsComponent>
-            <MetricsComponent>
-              {32}
-              <MetricsLabel>
-                Agendamentos
-              </MetricsLabel>
-            </MetricsComponent>
-          </MetricsSection>
-          <MetricsSection>
-            <MetricsComponent>
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart width={400} height={400}>
-                  <Pie
-                    data={data}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={renderCustomizedLabel}
-                    outerRadius={80}
-                    dataKey="value"
-                  >
-                    {data.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}/>
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
-            </MetricsComponent>
-          </MetricsSection>
-        </MetricsContainer>
-        <Bee8bBaseboardContainer>
-          <Bee8bBaseboardSubtitle>From</Bee8bBaseboardSubtitle>
-          <Bee8bBaseboardTitle>BEE8B</Bee8bBaseboardTitle>
-        </Bee8bBaseboardContainer>
+        <ProjectCard>
+          <ProjectCardLeftSide>
+            <ProjectHeader>
+              <ProjectTitle>Familia Doce amor</ProjectTitle>
+              <ProjectAddress>Mogi Guaçu - ype 2</ProjectAddress>
+            </ProjectHeader>
+            <ProjectGoalContainer>
+              <ProjectGoalLabel>Meta Mensal</ProjectGoalLabel>
+              <ProjectGoal>5</ProjectGoal>
+            </ProjectGoalContainer>
+          </ProjectCardLeftSide> 
+          <ProjectCardRight>
+            <ProjectImage src={Brunatop}/>
+          </ProjectCardRight>     
+        </ProjectCard>
       </Content>
     </Offsite>
   );
