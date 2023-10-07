@@ -220,15 +220,19 @@ export const DoNotHaveAccountLink = styled(Link)`
 
 export const ProjectCard = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%; 
   height: 18em; 
   background-color: white;
   border-radius: 8px; 
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1em;
 `;
 
-
+export const ProjectContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 export const ProjectTitle = styled.h1`
   font-size: 1.5em;
@@ -239,7 +243,6 @@ export const ProjectAddress = styled.h3`
 `;
 
 export const ProjectCardLeftSide = styled.div`
-  padding: 1em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -278,6 +281,51 @@ export const ProjectImage = styled.img`
   width: 7em;
 `;
 
+
+export const ProjectCardDivisor = styled.div`
+  border-bottom: 1px solid #ccc;
+  margin-top: 1em;
+  margin-bottom: 1em;
+`;
+
+export const ProjectRepresentativeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  width: 100%;
+`;
+
+
+export const ProjectRepresentativeImageContainer = styled.div`
+
+`;
+
+export const ProjectRepresentativeImage = styled.img`
+  border-radius: 100%;
+  height: 3em;
+  width: 3em;
+  border: 1.5px solid orange;
+
+`;
+
+
+export const ProjectRepresentativeHeaders = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+`;
+
+export const ProjectRepresentativeTitle = styled.h1`
+  font-size: 1.2rem;
+  font-weight: 300; 
+`;
+
+export const ProjectRepresentativeDescription = styled.h3`
+  font-size: 0.8em; 
+  color: #888; 
+  font-weight: 300; 
+`;
 
 
 
