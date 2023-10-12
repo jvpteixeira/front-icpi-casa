@@ -35,6 +35,7 @@ import {
 } from './styles';
 import Offsite from '../../containers/Offside';
 import Brunatop  from '../../assets/images/brunatop.jpeg';
+import MenuFlow from '../../components/MenuFlow';
 
 export default function PainelPage() {
   return (
@@ -69,6 +70,7 @@ export default function PainelPage() {
           </ProjectRepresentativeHeaders>           
         </ProjectRepresentativeContainer>
       </ProjectCard>
+      <MenuFlow/>
       </Content>
     </Offsite>
   );

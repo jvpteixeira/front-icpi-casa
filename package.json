@@ -18,6 +18,8 @@
     "axios": "^1.4.0",
     "babel-plugin-macros": "^3.1.0",
     "formik": "^2.2.9",
+    "fortawesome": "^0.0.1-security",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-charts": "^3.0.0-beta.55",
     "react-dom": "^18.2.0",
