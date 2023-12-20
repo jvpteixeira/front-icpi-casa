@@ -36,6 +36,7 @@ export const ProjectAlertButton = styled.div`
   display:flex;
   justify-content: right;
   padding: .8%;
+  background-color: white;
 `;
 
 export const ImageSine = styled.img`

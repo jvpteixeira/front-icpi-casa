@@ -12,16 +12,16 @@ export default function Dashboard() {
   <Content>
     <ProjectRodape>
       <ProjectImages>
-        <Link to="/login">
+        <Link to="/confirm">
         <Image src={Perfil} alt="Imagem 1" />
         </Link>
         <Link to="/status">
           <Image src={Pesquisar} alt="Imagem 2" />
         </Link>
-        <Link to="/painel">
+        <Link to="/cardscampign">
           <Image src={Familia} alt="Imagem 3" />
         </Link>
-        <Link to="/dashboard">
+        <Link to="/login">
           <Image src={Cesta} alt="Imagem 5" />
         </Link>
       </ProjectImages>

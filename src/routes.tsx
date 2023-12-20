@@ -9,6 +9,7 @@ import ClientsPhotosPage from './pages/clientsPhotos';
 import Notification from './pages/notification';
 import CampaignStatus from './pages/campaignStatus';
 import ScreenCampign from './pages/MainScreenCampaign';
+import ProjectCardsCampign from './pages/ProjectCards';
 
 export default function Routes() {
   return (
@@ -25,6 +26,7 @@ export default function Routes() {
         <Route path="/notification" element={<Notification />} />
         <Route path="/status" element={<CampaignStatus />} />
         <Route path="/screencampign" element={<ScreenCampign />} />
+        <Route path="/cardscampign" element={<ProjectCardsCampign />} />
       </Switch>
     </BrowserRouter>
   );

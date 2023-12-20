@@ -9,7 +9,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8em;
-  width: 100%;
+  width: 97%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 `;
 
 export const Label = styled.label`
@@ -36,6 +38,7 @@ export const Input = styled.input<InputProps>`
   &:focus {
     border-color: ${(props) => props.theme.color.primary};
   }
+  border-radius: 4px;
 `;
 
 export const Content = styled.div`

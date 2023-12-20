@@ -1,6 +1,6 @@
 import {
     CardText,
-  Content, GlobalContent, NumberBall, ProjectCardButtonConfirmation, ProjectCardConfirmation, ProjectCardGroup, ProjectConfirmation, ProjectSubTitle, ProjectTitleConfirmation,
+  Content, GlobalContent, NumberBall, ProjectCardButtonConfirmation, ProjectCardConfirmation, ProjectCardGroup, ProjectCardMessage, ProjectConfirmation, ProjectSubTitle, ProjectTitleConfirmation,
 } from './styles';
 import MenuFlow from '../dashboard';
 import HeaderNotification from '../notification';
@@ -9,6 +9,14 @@ import HeaderNotification from '../notification';
 export default function ConfirmationMessage() {
   return (
     <Content>
+    <ProjectCardMessage>
+        <CardText>
+            Uuhuuu! <b>parabéns</b> pela iniciativa
+        </CardText>
+        <CardText>
+            O REPRESENTANTE entrará em contato em breve
+        </CardText>
+    </ProjectCardMessage>
     <GlobalContent>
         <HeaderNotification/>
         <ProjectConfirmation>
