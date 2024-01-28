@@ -26,9 +26,28 @@ import dictionary from '../../config/dictionary';
 import MenuFlow from '../dashboard';
 import HeaderNotification from '../notification';
 import SquareImage from '../../assets/images/imagemCultoAjovep.jpg'
+import { useEffect, useState } from 'react';
+import GetAllCampaignsUseCase from '../../@core/application/campaigns/getAllCampaignsUseCase';
+import Campaign from '../../@core/domain/model/Campaign';
 
 
 export default function ProjectCardsCampign() {
+
+  const [campaigns, setCampaigns] = useState<Campaign[]>([])
+
+
+  useEffect(() => {
+   const getAllCampaignsUseCase = new GetAllCampaignsUseCase();
+
+
+   getAllCampaignsUseCase.execute().then(res => {
+      setCampaigns(res.data)
+   }).catch(err => {
+    console.log("Erro na requisição para recuperar todas campanhas", err)
+   })
+
+  }, [])
+
   return (
     <Content>
       <HeaderNotification/>
@@ -39,65 +58,38 @@ export default function ProjectCardsCampign() {
             placeholder={dictionary.register.placeholderOwner}
             icon={faMagnifyingGlass} 
           />
-      <ProjectCard>
-        <ProjectContainer>
-          <ProjectCardLeftSide>
-            <ProjectHeader>
-              <ProjectTitle>Familia Doce amor</ProjectTitle>
-              <ProjectAddress>Mogi Guaçu - ype 2</ProjectAddress>
-            </ProjectHeader>
-            <ProjectGoalContainer>
-              <ProjectGoalLabel>Meta Mensal</ProjectGoalLabel>
-              <ProjectGoal>5</ProjectGoal>
-            </ProjectGoalContainer>
-          </ProjectCardLeftSide> 
-          <ProjectCardRight>
-            <ProjectImage src={SquareImage}/>
-          </ProjectCardRight>
-        </ProjectContainer>
 
-        <ProjectCardDivisor/>
-        
-        <ProjectRepresentativeContainer>
-          <ProjectRepresentativeImageContainer>
-            <ProjectRepresentativeImage src={SquareImage}/>
-          </ProjectRepresentativeImageContainer>
-          <ProjectRepresentativeHeaders>
-            <ProjectRepresentativeTitle>Edivaldo Pereira</ProjectRepresentativeTitle>
-            <ProjectRepresentativeDescription>Representante - Voluntário</ProjectRepresentativeDescription>
-          </ProjectRepresentativeHeaders>           
-        </ProjectRepresentativeContainer>
-      </ProjectCard>
+      {campaigns.map(campaign => (
+        <ProjectCard>
+          <ProjectContainer>
+            <ProjectCardLeftSide>
+              <ProjectHeader>
+                <ProjectTitle>{campaign.nome}</ProjectTitle>
+                <ProjectAddress>Mogi Guaçu - ype 2</ProjectAddress>
+              </ProjectHeader>
+              <ProjectGoalContainer>
+                <ProjectGoalLabel>Meta Mensal</ProjectGoalLabel>
+                <ProjectGoal>{campaign.meta}</ProjectGoal>
+              </ProjectGoalContainer>
+            </ProjectCardLeftSide> 
+            <ProjectCardRight>
+              <ProjectImage src={SquareImage}/>
+            </ProjectCardRight>
+          </ProjectContainer>
 
-      <ProjectCard>
-        <ProjectContainer>
-          <ProjectCardLeftSide>
-            <ProjectHeader>
-              <ProjectTitle>Familia Doce amor</ProjectTitle>
-              <ProjectAddress>Mogi Guaçu - ype 2</ProjectAddress>
-            </ProjectHeader>
-            <ProjectGoalContainer>
-              <ProjectGoalLabel>Meta Mensal</ProjectGoalLabel>
-              <ProjectGoal>5</ProjectGoal>
-            </ProjectGoalContainer>
-          </ProjectCardLeftSide> 
-          <ProjectCardRight>
-            <ProjectImage src={SquareImage}/>
-          </ProjectCardRight>
-        </ProjectContainer>
-
-        <ProjectCardDivisor/>
-        
-        <ProjectRepresentativeContainer>
-          <ProjectRepresentativeImageContainer>
-            <ProjectRepresentativeImage src={SquareImage}/>
-          </ProjectRepresentativeImageContainer>
-          <ProjectRepresentativeHeaders>
-            <ProjectRepresentativeTitle>Edivaldo Pereira</ProjectRepresentativeTitle>
-            <ProjectRepresentativeDescription>Representante - Voluntário</ProjectRepresentativeDescription>
-          </ProjectRepresentativeHeaders>           
-        </ProjectRepresentativeContainer>
-      </ProjectCard>
+          <ProjectCardDivisor/>
+          
+          <ProjectRepresentativeContainer>
+            <ProjectRepresentativeImageContainer>
+              <ProjectRepresentativeImage src={SquareImage}/>
+            </ProjectRepresentativeImageContainer>
+            <ProjectRepresentativeHeaders>
+              <ProjectRepresentativeTitle>{campaign.organizador}</ProjectRepresentativeTitle>
+              <ProjectRepresentativeDescription>Representante - Voluntário</ProjectRepresentativeDescription>
+            </ProjectRepresentativeHeaders>           
+          </ProjectRepresentativeContainer>
+        </ProjectCard>
+      ))}
       <MenuFlow/>
     </Content>
   );
