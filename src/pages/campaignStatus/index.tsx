@@ -37,7 +37,6 @@ import IconeGeovana from '../../assets/images/IconeGeovana.jpg'
 import IconeDanilo from '../../assets/images/IconeDanilo.jpg'
 import IconeBruna from '../../assets/images/IconeBruna.jpg'
 
-
 export default function CampaignStatus() {
   return (
       <Content>

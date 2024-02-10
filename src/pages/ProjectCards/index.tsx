@@ -29,38 +29,43 @@ import SquareImage from '../../assets/images/imagemCultoAjovep.jpg'
 import { useEffect, useState } from 'react';
 import GetAllCampaignsUseCase from '../../@core/application/campaigns/getAllCampaignsUseCase';
 import Campaign from '../../@core/domain/model/Campaign';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function ProjectCardsCampign() {
 
   const [campaigns, setCampaigns] = useState<Campaign[]>([])
+  const [campaignsSearchFilter, setCampaignsSearchFilter] = useState<string>()
+
+  const navigate = useNavigate();
+
 
 
   useEffect(() => {
    const getAllCampaignsUseCase = new GetAllCampaignsUseCase();
 
-
-   getAllCampaignsUseCase.execute().then(res => {
+   getAllCampaignsUseCase.execute({name: campaignsSearchFilter}).then(res => {
       setCampaigns(res.data)
    }).catch(err => {
     console.log("Erro na requisição para recuperar todas campanhas", err)
    })
 
-  }, [])
+  }, [campaignsSearchFilter])
 
   return (
     <Content>
       <HeaderNotification/>
       <Textbox
-            label={dictionary.register.labelOwner}
-            name="owner"
-            type="text"
-            placeholder={dictionary.register.placeholderOwner}
-            icon={faMagnifyingGlass} 
-          />
+        label={dictionary.register.labelOwner}
+        name="owner"
+        type="text"
+        placeholder={dictionary.register.placeholderOwner}
+        icon={faMagnifyingGlass}
+        value={campaignsSearchFilter}
+        setValue={e => setCampaignsSearchFilter(e.target.value)}
+      />
 
       {campaigns.map(campaign => (
-        <ProjectCard>
+        <ProjectCard onClick={() => navigate("/status")} >
           <ProjectContainer>
             <ProjectCardLeftSide>
               <ProjectHeader>

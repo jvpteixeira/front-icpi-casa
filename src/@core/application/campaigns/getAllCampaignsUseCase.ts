@@ -5,9 +5,15 @@ import * as campaignService from '../../infrastructure/api/services/campaignServ
 
 import IUseCase from '../IUseCase';
 
-export default class GetAllCampaignsUseCase implements IUseCase<void, Promise<AxiosResponse<Campaign[]>>>
+
+export interface CampaignsFilter {
+  name?: string
+}
+
+
+export default class GetAllCampaignsUseCase implements IUseCase<CampaignsFilter, Promise<AxiosResponse<Campaign[]>>>
 {
-  execute() {
-    return campaignService.getCampaigns();
+  execute(filters: CampaignsFilter) {
+    return campaignService.getCampaigns(filters);
   }
 }
