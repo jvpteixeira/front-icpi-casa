@@ -11,6 +11,8 @@ export interface CampaignsFilter {
 }
 
 
+
+
 export default class GetAllCampaignsUseCase implements IUseCase<CampaignsFilter, Promise<AxiosResponse<Campaign[]>>>
 {
   execute(filters: CampaignsFilter) {

@@ -26,7 +26,7 @@ export default function Routes() {
         <Route path="/notification" element={<Notification />} />
         <Route path="/status" element={<CampaignStatus />} />
         <Route path="/screencampign" element={<ScreenCampign />} />
-        <Route path="/cardscampign" element={<ProjectCardsCampign />} />
+        <Route path="/cardscampaign" element={<ProjectCardsCampign />} />
       </Switch>
     </BrowserRouter>
   );

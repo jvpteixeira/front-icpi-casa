@@ -24,6 +24,9 @@ import {
   CampaignStatusVoluntaryName,
   Content,
 } from './styles';
+import Campaign from '../../@core/domain/model/Campaign';
+import { useEffect, useState } from 'react';
+import GetDescricaoUseCase from '../../@core/application/campaigns/getDescricaoUseCase';
 import MenuFlow from '../dashboard';
 import HeaderNotification from '../notification';
 import ImageSpark from '../../assets/images/ArreadacaoSpark.jpg'
@@ -38,6 +41,26 @@ import IconeDanilo from '../../assets/images/IconeDanilo.jpg'
 import IconeBruna from '../../assets/images/IconeBruna.jpg'
 
 export default function CampaignStatus() {
+
+const [campaign, setCampaign] = useState<Campaign>()
+const [campaignsDescricaoFilter] = useState<string>()
+
+
+
+
+
+useEffect(() => {
+const getDescricaoUseCase = new GetDescricaoUseCase();
+
+getDescricaoUseCase.execute("54a6a3c5-e3e1-46e0-8adc-fbce1b6ece5f").then(res => {
+    setCampaign(res.data)
+}).catch(err => {
+console.log("Erro na requisição para recuperar a descrição da campanha", err)
+})
+
+}, [campaignsDescricaoFilter])
+
+
   return (
       <Content>
         <HeaderNotification/>
@@ -52,12 +75,9 @@ export default function CampaignStatus() {
         </CampaignStatusImageDiv>
 
         <CampaignStatusSubtitleDiv>
-            <CampaignStatusSubtitle>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam expedita fugiat molestiae optio 
-                consequatur ducimus cupiditate autem, eaque asperiores dolores eos nulla et labore debitis! Sunt molestiae 
-                neque quibusdam deleniti?
-            </CampaignStatusSubtitle>
+        <CampaignStatusSubtitle>{campaign?.descricao}</CampaignStatusSubtitle>
         </CampaignStatusSubtitleDiv>
+        
         
         <CampaignStatusBoxStatus>
             <CampaignStatusBoxText>
@@ -67,7 +87,7 @@ export default function CampaignStatus() {
 
         <CampaignStatusNumberDiv>
             <CampaignStatusNumber>
-                05 de 15
+                A meta
             </CampaignStatusNumber>
         </CampaignStatusNumberDiv>
 
@@ -76,62 +96,6 @@ export default function CampaignStatus() {
                 <CampaignStatusImageMini src={IconeLarissa} alt={"Imagem da Larissa"}/>
                 <CampaignStatusVoluntaryName>
                     Larissa
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-            
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeDanilo} alt={"Imagem do Danilo"}/>
-                <CampaignStatusVoluntaryName>
-                    Danilo
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeBruna} alt={"Imagem da Bruna"}/>
-                <CampaignStatusVoluntaryName>
-                    Bruna
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeJuan} alt={"Imagem do Juan"}/>
-                <CampaignStatusVoluntaryName>
-                    Juan
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-            
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeIsmaela} alt={"Imagem da Ismaela"}/>
-                <CampaignStatusVoluntaryName>
-                    Ismaela
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeCarol} alt={"Imagem da Carol"}/>
-                <CampaignStatusVoluntaryName>
-                    Carol
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeLemao} alt={"Imagem do Lemao"}/>
-                <CampaignStatusVoluntaryName>
-                    Lemao
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-            
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeAndreia} alt={"Imagem da Andreia"}/>
-                <CampaignStatusVoluntaryName>
-                    Andreia
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeGeovana} alt={"Imagem de Geovana"}/>
-                <CampaignStatusVoluntaryName>
-                    Geovana
                 </CampaignStatusVoluntaryName>
             </CampaignStatusMinGrid>
 

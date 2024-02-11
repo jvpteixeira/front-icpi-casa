@@ -18,7 +18,7 @@ export default function Dashboard() {
         <Link to="/status">
           <Image src={Pesquisar} alt="Imagem 2" />
         </Link>
-        <Link to="/cardscampign">
+        <Link to="/cardscampaign">
           <Image src={Familia} alt="Imagem 3" />
         </Link>
         <Link to="/login">

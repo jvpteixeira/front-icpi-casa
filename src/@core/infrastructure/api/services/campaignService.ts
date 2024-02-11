@@ -1,5 +1,4 @@
 import { CampaignsFilter } from '../../../application/campaigns/getAllCampaignsUseCase';
-import Register from '../../../domain/model/Register';
 import api from '../api';
 
 export const getCampaigns = (filters: CampaignsFilter) => {
@@ -8,4 +7,8 @@ export const getCampaigns = (filters: CampaignsFilter) => {
       name: filters.name
     }
   });
+};
+
+export const getCampaignById = (id: string) => {
+  return api.get(`/campaign/${id}`);
 };
