@@ -73,7 +73,7 @@ export default function ProjectCardsCampign() {
                 <ProjectAddress>Mogi Guaçu - ype 2</ProjectAddress>
               </ProjectHeader>
               <ProjectGoalContainer>
-                <ProjectGoalLabel>Meta Mensal</ProjectGoalLabel>
+                <ProjectGoalLabel>campaign</ProjectGoalLabel>
                 <ProjectGoal>{campaign.meta}</ProjectGoal>
               </ProjectGoalContainer>
             </ProjectCardLeftSide> 

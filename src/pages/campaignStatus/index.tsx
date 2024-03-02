@@ -25,43 +25,46 @@ import {
   Content,
 } from './styles';
 import Campaign from '../../@core/domain/model/Campaign';
+import Colaborator from '../../@core/domain/model/Colaborator';
 import { useEffect, useState } from 'react';
+import GetNameColaboratorUseCase from '../../@core/application/colaborator/getNameUseCase';
 import GetDescricaoUseCase from '../../@core/application/campaigns/getDescricaoUseCase';
 import MenuFlow from '../dashboard';
 import HeaderNotification from '../notification';
 import ImageSpark from '../../assets/images/ArreadacaoSpark.jpg'
-import IconeLarissa from '../../assets/images/IconeLarissa.jpg'
-import IconeLemao from '../../assets/images/IconeLemao.jpg'
-import IconeAndreia from '../../assets/images/IconeAndreia.jpg'
-import IconeCarol from '../../assets/images/IconeCarol.jpg'
-import IconeIsmaela from '../../assets/images/IconeIsmaela.jpg'
-import IconeJuan from '../../assets/images/IconeJuan.jpg'
-import IconeGeovana from '../../assets/images/IconeGeovana.jpg'
-import IconeDanilo from '../../assets/images/IconeDanilo.jpg'
+import IconePerfil from '../../assets/images/IconePerfil.svg'
 import IconeBruna from '../../assets/images/IconeBruna.jpg'
 
 export default function CampaignStatus() {
 
-const [campaign, setCampaign] = useState<Campaign>()
-const [campaignsDescricaoFilter] = useState<string>()
+    const [campaign, setCampaign] = useState<Campaign>()
+
+    const [colaborators, setColaborators] = useState<Colaborator[]>()
+
+
+    useEffect(() => {
+        const getDescricaoUseCase = new GetDescricaoUseCase();
+
+        getDescricaoUseCase.execute("3950c980-bf61-4a40-badf-f5425ac42db0").then(res => {
+            setCampaign(res.data)
+        }).catch(err => {
+        console.log("Erro na requisição para recuperar a descrição da campanha", err)
+        })
+    })
+
+    useEffect(() => {
+        const getNameColaboratorUseCase = new GetNameColaboratorUseCase();
+        
+        getNameColaboratorUseCase.execute('3950c980-bf61-4a40-badf-f5425ac42db0').then(res =>{
+            setColaborators(res.data) 
+        }).catch(error => {
+            console.log("Erro na requisição do nome do colaborador", error)
+        })
+    })
 
 
 
-
-
-useEffect(() => {
-const getDescricaoUseCase = new GetDescricaoUseCase();
-
-getDescricaoUseCase.execute("54a6a3c5-e3e1-46e0-8adc-fbce1b6ece5f").then(res => {
-    setCampaign(res.data)
-}).catch(err => {
-console.log("Erro na requisição para recuperar a descrição da campanha", err)
-})
-
-}, [campaignsDescricaoFilter])
-
-
-  return (
+    return (
       <Content>
         <HeaderNotification/>
         <CampaignStatusMainDiv>
@@ -71,7 +74,7 @@ console.log("Erro na requisição para recuperar a descrição da campanha", err
         </CampaignStatusTitle>
 
         <CampaignStatusImageDiv>
-            <CampaignStatusImage src={ImageSpark}/>
+            <CampaignStatusImage src={ImageSpark} alt="imagem generica de campanha"/>
         </CampaignStatusImageDiv>
 
         <CampaignStatusSubtitleDiv>
@@ -87,18 +90,21 @@ console.log("Erro na requisição para recuperar a descrição da campanha", err
 
         <CampaignStatusNumberDiv>
             <CampaignStatusNumber>
-                A meta
+                {campaign?.meta}
             </CampaignStatusNumber>
         </CampaignStatusNumberDiv>
 
         <CampaignStatusGridImage>
-            <CampaignStatusMinGrid>
-                <CampaignStatusImageMini src={IconeLarissa} alt={"Imagem da Larissa"}/>
-                <CampaignStatusVoluntaryName>
-                    Larissa
-                </CampaignStatusVoluntaryName>
-            </CampaignStatusMinGrid>
-
+            {colaborators?.map(colaborator => {
+            console.log(colaborator)
+            return (
+                <CampaignStatusMinGrid>
+                    <CampaignStatusImageMini src={IconePerfil} alt={"Colaborador"}/>
+                    <CampaignStatusVoluntaryName>
+                        {colaborator?.name}
+                    </CampaignStatusVoluntaryName>
+                </CampaignStatusMinGrid>
+            )})}
         </CampaignStatusGridImage>
 
         <CampaignStatusDivCardMain>
