@@ -157,3 +157,9 @@ export const DoNotHaveAccountLink = styled(Link)`
     font-weight: 500;
   }
 `;
+
+
+export const StyledLink = styled(Link)`
+  text-decoration: none; /* Remover sublinhado do link */
+  color: inherit; /* Herdar a cor do texto do elemento pai */
+`;

@@ -17,3 +17,5 @@ export const getCampaignById = (id: string) => {
 export const getColaboratorByIdCampaign = (idCampaign: string) => {
   return api.get(`/campaigns/${idCampaign}/colaborators`);
 };
+
+

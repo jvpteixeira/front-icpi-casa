@@ -1,8 +1,6 @@
 export default interface Register {
   name: string;
+  age: string;
   email: string;
-  password: string;
-  cnpj: string;
-  establishmentType: string;
   phone: string;
 }

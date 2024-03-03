@@ -23,6 +23,7 @@ import {
   CampaignStatusVoluntaryButtom,
   CampaignStatusVoluntaryName,
   Content,
+  StyledLink,
 } from './styles';
 import Campaign from '../../@core/domain/model/Campaign';
 import Colaborator from '../../@core/domain/model/Colaborator';
@@ -129,7 +130,9 @@ export default function CampaignStatus() {
 
         <CampaignStatusVoluntaryButtom>
             <CampaignStatusTextButtom>
-                <i>QUERO SER UM VOLUNTÁRIO</i>
+            <StyledLink to="/registre-se">
+                Quero Ser Voluntario
+            </StyledLink>
             </CampaignStatusTextButtom>
         </CampaignStatusVoluntaryButtom>
         

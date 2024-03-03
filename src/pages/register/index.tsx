@@ -1,42 +1,47 @@
 import { useCallback, useContext } from 'react';
 import dictionary from '../../config/dictionary';
 import {
-  Bee8bBaseboardContainer,
-  Bee8bBaseboardSubtitle,
-  Bee8bBaseboardTitle,
   Content,
   Form,
   Header,
   HeaderContainer,
   NextButton,
-  Partition,
+  StyledLink,
 } from './styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLocationDot, faLock, faMoneyCheck, faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useFormik } from 'formik';
 import Register from '../../interfaces/register';
 import Offsite from '../../containers/Offside';
 import validationLogin from './validation';
 import LoadingContextContent from '../../contexts/LoadingContext';
 import Textbox from '../../components/Textbox';
+import axios from 'axios';
+import PostColaborator from '../../@core/application/colaborator/postColaborator';
 
 export default function RegisterPage() {
   const { setLoading } = useContext(LoadingContextContent);
 
+    const postColaborator = new PostColaborator();
+
+    const doRegister = async (value: Register) => {
+      try {
+        // Chama o método execute da instância de PostColaborator e passa os dados do registro
+        const response = await postColaborator.execute(["3950c980-bf61-4a40-badf-f5425ac42db0", value.name, value.age, value.email, value.telephone]);
+        console.log('Dados enviados com sucesso:', response.data);
+        // Aqui você pode adicionar tratamentos adicionais conforme necessário
+      } catch (error) {
+        console.error('Ocorreu um erro ao enviar os dados:', error);
+        // Aqui você pode adicionar tratamentos para erros de requisição
+      }
+    };
+
+
+
   const formState: Register = {
-    owner: '', 
+    name: '', 
+    age: '',
     email: '',
-    password: '',
-    telephone: '', 
-    socialName: '', 
-    fantasyName: '', 
-    cnpj: '', 
-    CEP: '', 
-    street: '', 
-    neighborhood: '', 
-    city: '', 
-    country: '', 
-    number: ''
+    telephone: '',
   };
 
   const registerForm = useFormik({
@@ -53,23 +58,7 @@ export default function RegisterPage() {
   });
 
  
-  const doRegister = useCallback((value: Register) => {
-    alert(
-      `email: ${value.email}
-       password: ${value.password}
-       owner: ${value.owner}
-       telephone: ${value.telephone}
-       socialName: ${value.socialName}
-       fantasyName: ${value.fantasyName}
-       cnpj: ${value.cnpj}
-       CEP: ${value.CEP}
-       street: ${value.street}
-       neighborhood: ${value.neighborhood}
-       city: ${value.city}
-       country: ${value.country}`
-    );
-    // doRegister(value) TODO: Implementar tratativas para erros
-  }, []);
+  
 
   const handleSubmit = useCallback(
     (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -87,15 +76,27 @@ export default function RegisterPage() {
         </HeaderContainer>
         <Form>
           <Textbox
-            label={dictionary.register.labelOwner}
-            name="owner"
+            label={dictionary.register.labelName}
+            name="name"
             type="text"
-            placeholder={dictionary.register.placeholderOwner}
-            value={registerForm.values.owner}
+            placeholder={dictionary.register.placeholderName}
+            value={registerForm.values.name}
             setValue={registerForm.handleChange}
-            error={registerForm.errors.owner}
+            error={registerForm.errors.name}
             icon={faUser} 
           />
+
+          <Textbox
+            label={dictionary.register.labelAge}
+            name="age"
+            type="text"
+            placeholder={dictionary.register.placeholderAge}
+            value={registerForm.values.age}
+            setValue={registerForm.handleChange}
+            error={registerForm.errors.age}
+            icon={faPhone}
+          />
+
           <Textbox
             label={dictionary.register.labelEmail}
             name="email"
@@ -106,17 +107,7 @@ export default function RegisterPage() {
             error={registerForm.errors.email}
             icon={faEnvelope}
           />
-          <Textbox
-            label={dictionary.register.labelPassword}
-            name="password"
-            type="password"
-            placeholder={dictionary.register.placeholderPassword}
-            isPassword
-            value={registerForm.values.password}
-            setValue={registerForm.handleChange}
-            error={registerForm.errors.password}
-            icon={faLock}
-          />
+          
           <Textbox
             label={dictionary.register.labelTelephone}
             name="telephone"
@@ -128,114 +119,12 @@ export default function RegisterPage() {
             icon={faPhone}
           />
 
-          <Textbox
-            label={dictionary.register.socialName}
-            name="socialName"
-            type="text"
-            placeholder={dictionary.register.placeholderSocialName}
-            value={registerForm.values.socialName}
-            setValue={registerForm.handleChange}
-            error={registerForm.errors.socialName}
-            icon={faMoneyCheck}
-          />
-
-          <Textbox
-            label={dictionary.register.fantasyName}
-            name="fantasyName"
-            type="text"
-            placeholder={dictionary.register.placeholderFantasyName}
-            value={registerForm.values.fantasyName}
-            setValue={registerForm.handleChange}
-            error={registerForm.errors.fantasyName}
-            icon={faMoneyCheck}
-          />
-
-          <Textbox
-            label={dictionary.register.cnpj}
-            name="cnpj"
-            type="text"
-            placeholder={dictionary.register.cnpj}
-            value={registerForm.values.cnpj}
-            setValue={registerForm.handleChange}
-            error={registerForm.errors.cnpj}
-            icon={faMoneyCheck}
-          />
-
-          <Partition>
-            <Textbox
-              label={dictionary.register.CEP}
-              name="CEP"
-              type="text"
-              placeholder={dictionary.register.CEP}
-              value={registerForm.values.CEP}
-              setValue={registerForm.handleChange}
-              error={registerForm.errors.CEP}
-              icon={faLocationDot}
-            />
-
-            <Textbox
-              label={dictionary.register.street}
-              name="street"
-              type="text"
-              placeholder={dictionary.register.placeholderStreet}
-              value={registerForm.values.street}
-              setValue={registerForm.handleChange}
-              error={registerForm.errors.street}
-              icon={faLocationDot}
-            />
-
-            <Textbox
-              label={dictionary.register.number}
-              name="number"
-              type="text"
-              placeholder={dictionary.register.placeholderNumber}
-              value={registerForm.values.number}
-              setValue={registerForm.handleChange}
-              error={registerForm.errors.number}
-              icon={faLocationDot}
-            />
-
-            <Textbox
-              label={dictionary.register.neighborhood}
-              name="neighborhood"
-              type="text"
-              placeholder={dictionary.register.placeholderNeighborhood}
-              value={registerForm.values.neighborhood}
-              setValue={registerForm.handleChange}
-              error={registerForm.errors.neighborhood}
-              icon={faLocationDot}
-            />
-
-            <Textbox
-              label={dictionary.register.city}
-              name="city"
-              type="text"
-              placeholder={dictionary.register.placeholderCity}
-              value={registerForm.values.city}
-              setValue={registerForm.handleChange}
-              error={registerForm.errors.city}
-              icon={faLocationDot}
-            />
-
-            <Textbox
-              label={dictionary.register.country}
-              name="country"
-              type="text"
-              placeholder={dictionary.register.placeholderCountry}
-              value={registerForm.values.country}
-              setValue={registerForm.handleChange}
-              error={registerForm.errors.country}
-              icon={faLocationDot}
-            />
-          </Partition>
           <NextButton onClick={handleSubmit}>
-            <span>{dictionary.register.save}</span>
+            <StyledLink to="/confirm">
+              <span>{dictionary.register.save}</span>
+            </StyledLink>
           </NextButton>
         </Form>
-        <Bee8bBaseboardContainer>
-          <Bee8bBaseboardSubtitle>From</Bee8bBaseboardSubtitle>
-          <Bee8bBaseboardTitle>BEE8B</Bee8bBaseboardTitle>
-        </Bee8bBaseboardContainer>
       </Content>
     </Offsite>
   );

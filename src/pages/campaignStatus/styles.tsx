@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Content = styled.div`
@@ -213,5 +214,10 @@ export const CampaignStatusVoluntaryButtom = styled.div`
 export const CampaignStatusTextButtom = styled.span`
   text-align: center;
   padding: 3%;
-  font-size: .8em;
+  font-size: 1em;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none; /* Remover sublinhado do link */
+  color: inherit; /* Herdar a cor do texto do elemento pai */
 `;
