@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Content = styled.div`
@@ -20,18 +21,18 @@ export const Content = styled.div`
 `;
 
 export const ProjectConfirmation = styled.div`
-width: 100%;
-height: 100%
+  width: 100%;
+  height: 100%
 `;
 
 export const ProjectTitleConfirmation = styled.h1`
-padding: 5%;
-font-size: 150%;
+  padding: 5%;
+  font-size: 150%;
 `;
 
 export const ProjectSubTitle = styled.p`
-padding: 5%;
-font-size: 80%;
+  padding: 5%;
+  font-size: 80%;
 `;
 
 
@@ -75,6 +76,7 @@ export const CardText = styled.span`
 `;
 
 
+
 export const ProjectCardButtonConfirmation = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,7 +88,13 @@ export const ProjectCardButtonConfirmation = styled.div`
   background-color: rgb(150,255,150);
   border-radius: 4px; 
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  `;  
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  text-align: left;
+  padding: 5%;
+  font-size: 80%;
 `;
-
-
 

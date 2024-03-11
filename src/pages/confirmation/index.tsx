@@ -1,6 +1,6 @@
 import {
   CardText,
-  Content, NumberBall, ProjectCardButtonConfirmation, ProjectCardConfirmation, ProjectCardGroup, ProjectConfirmation, ProjectSubTitle, ProjectTitleConfirmation,
+  Content, NumberBall, ProjectCardButtonConfirmation, ProjectCardConfirmation, ProjectCardGroup, ProjectConfirmation, ProjectSubTitle, ProjectTitleConfirmation, StyledLink,
 } from './styles';
 import MenuFlow from '../dashboard';
 import HeaderNotification from '../notification';
@@ -66,9 +66,9 @@ export default function Confirmation() {
         </ProjectCardConfirmation>
 
         <ProjectCardButtonConfirmation>
-          <CardText>
-            QUERO SER VOLUNTÁRIO!
-          </CardText>
+          <StyledLink to="/registre-se">
+            CONFIRMAR INSCRIÇÃO!
+          </StyledLink>
         </ProjectCardButtonConfirmation>
 
       </ProjectCardGroup>

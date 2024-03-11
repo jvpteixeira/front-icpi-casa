@@ -9,7 +9,6 @@ export const getColaboratorByIdCampaign = (id: string) => {
 
 export async function postColaborators(campaignId: string, name: string, age: string, mail: string, phone: string): Promise<AxiosResponse<Colaborator>> {
   try {
-    console.log("Cheguei aqui!!!!!!!!!!!");
     const response = await api.post(`campaigns/${campaignId}/colaborators`, {
       name,
       phone,

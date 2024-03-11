@@ -15,7 +15,6 @@ import Offsite from '../../containers/Offside';
 import validationLogin from './validation';
 import LoadingContextContent from '../../contexts/LoadingContext';
 import Textbox from '../../components/Textbox';
-import axios from 'axios';
 import PostColaborator from '../../@core/application/colaborator/postColaborator';
 
 export default function RegisterPage() {

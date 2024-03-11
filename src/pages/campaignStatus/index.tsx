@@ -130,7 +130,7 @@ export default function CampaignStatus() {
 
         <CampaignStatusVoluntaryButtom>
             <CampaignStatusTextButtom>
-            <StyledLink to="/registre-se">
+            <StyledLink to="/confirmation">
                 Quero Ser Voluntario
             </StyledLink>
             </CampaignStatusTextButtom>
